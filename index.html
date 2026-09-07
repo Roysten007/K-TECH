@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-TECH — Le meilleur de la tech, livré chez vous en 24h</title>
+  <meta name="description" content="Boutique high-tech au Bénin. Téléphones, ordinateurs, casques audio et accessoires originaux avec commande directe en 1 clic sur WhatsApp et paiement à la livraison.">
+  
+  <!-- Polices Google Fonts : Space Grotesk (Titres Tech & Bold) & Inter (Lisibilité corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tech: {
+              blue: '#0057D9',
+              'blue-dark': '#0043A8',
+              'blue-light': '#EBF3FF',
+              navy: '#06152D',
+              yellow: '#FFC700',
+              'yellow-hover': '#E6B300',
+              'yellow-light': '#FFF9E6',
+            }
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Styles personnalisés et animations -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-slate-900 antialiased selection:bg-yellow-200 selection:text-slate-900">
+
+
+  <!-- ========================================================================= -->
+  <!-- 1. HEADER (STICKY AU SCROLL) -->
+  <!-- ========================================================================= -->
+  <header id="main-header" class="sticky top-0 z-50 bg-white border-b border-slate-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Boutique -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-11 h-11 rounded-xl bg-tech-blue flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 text-amber-300" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-black font-heading tracking-tight text-slate-900 group-hover:text-tech-blue transition-colors">
+            K<span class="text-tech-blue">-TECH</span>
+          </span>
+          <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase -mt-1">Tech Store Bénin</span>
+        </div>
+      </a>
+
+      <!-- Navigation Desktop -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+        <a href="#" class="hover:text-tech-blue transition-colors text-tech-blue">Accueil</a>
+        <a href="#catalogue" class="hover:text-tech-blue transition-colors">Catalogue</a>
+        
+        <!-- Dropdown Catégories -->
+        <div class="relative group py-2">
+          <button class="flex items-center gap-1.5 hover:text-tech-blue transition-colors">
+            Catégories
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-tech-blue group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full -left-4 w-60 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+            <a href="javascript:void(0)" onclick="filterFromCategoryCard('phones')" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-blue-50 text-tech-blue flex items-center justify-center text-sm font-bold">📱</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Téléphones</div>
+                <div class="text-[10px] text-slate-500">iPhone, Samsung, Pixel</div>
+              </div>
+            </a>
+            <a href="javascript:void(0)" onclick="filterFromCategoryCard('laptops')" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-blue-50 text-tech-blue flex items-center justify-center text-sm font-bold">💻</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Ordinateurs</div>
+                <div class="text-[10px] text-slate-500">MacBook, Dell, HP, Lenovo</div>
+              </div>
+            </a>
+            <a href="javascript:void(0)" onclick="filterFromCategoryCard('audio')" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-blue-50 text-tech-blue flex items-center justify-center text-sm font-bold">🎧</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Casques Audio</div>
+                <div class="text-[10px] text-slate-500">Sony, AirPods, JBL, Marshall</div>
+              </div>
+            </a>
+            <a href="javascript:void(0)" onclick="filterFromCategoryCard('accessories')" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-blue-50 text-tech-blue flex items-center justify-center text-sm font-bold">🔌</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Accessoires</div>
+                <div class="text-[10px] text-slate-500">Chargeurs GaN, Powerbanks, Hubs & Câbles</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#a-propos" class="hover:text-tech-blue transition-colors">À Propos</a>
+        <a href="#pourquoi-nous" class="hover:text-tech-blue transition-colors">Garantie & Confiance</a>
+        <a href="#livraison" class="hover:text-tech-blue transition-colors">Livraison</a>
+        <a href="#avis" class="hover:text-tech-blue transition-colors">Avis clients</a>
+        <a href="#faq" class="hover:text-tech-blue transition-colors">FAQ</a>
+        <a href="#contact" class="hover:text-tech-blue transition-colors">Contact</a>
+      </nav>
+
+      <!-- Actions Header -->
+      <div class="flex items-center gap-3">
+        <!-- CTA Header WhatsApp -->
+        <a id="header-wa-btn" href="https://wa.me/22994171838" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>WhatsApp Direct</span>
+        </a>
+
+        <!-- Hamburger Mobile -->
+        <button id="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Tiroir Mobile -->
+  <div id="mobile-nav-drawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex-col justify-end">
+    <div class="bg-white rounded-t-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+        <span class="font-black font-heading text-xl text-slate-900">Menu K-TECH</span>
+        <button id="mobile-menu-close" class="p-2 rounded-full bg-slate-100 text-slate-700">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-3 font-semibold text-slate-800 text-base">
+        <a href="#" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Accueil</a>
+        <a href="#catalogue" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Catalogue complet</a>
+        <div class="pl-4 border-l-2 border-blue-500 flex flex-col gap-2 py-1 text-sm text-slate-600">
+          <a href="javascript:void(0)" onclick="filterFromCategoryCard('phones')" class="mobile-nav-link">📱 Téléphones</a>
+          <a href="javascript:void(0)" onclick="filterFromCategoryCard('laptops')" class="mobile-nav-link">💻 Ordinateurs</a>
+          <a href="javascript:void(0)" onclick="filterFromCategoryCard('audio')" class="mobile-nav-link">🎧 Casques Audio</a>
+          <a href="javascript:void(0)" onclick="filterFromCategoryCard('accessories')" class="mobile-nav-link">🔌 Accessoires</a>
+        </div>
+        <a href="#a-propos" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">À Propos de K-Tech</a>
+        <a href="#pourquoi-nous" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Pourquoi nous choisir</a>
+        <a href="#livraison" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Livraison & Calculateur</a>
+        <a href="#avis" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Avis clients</a>
+        <a href="#faq" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">FAQ Anti-objections</a>
+        <a href="#contact" class="mobile-nav-link p-2 rounded-lg hover:bg-slate-50">Contact & Boutique</a>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-100">
+        <a href="https://wa.me/22994171838" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-action w-full py-3 rounded-xl flex items-center justify-center gap-2 text-sm">
+          <span>Discuter avec un conseiller sur WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION (HAUTE CONVERSION) -->
+  <!-- ========================================================================= -->
+  <section class="relative overflow-hidden min-h-[540px] sm:min-h-[600px] lg:min-h-[660px] flex flex-col justify-center bg-slate-50 py-14 sm:py-20 lg:py-24">
+    <!-- Image d'arrière-plan panoramique 3D positionnée plus haut -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img 
+        src="assets/hero-bg-centered.jpg" 
+        alt="K-Tech Studio Devices" 
+        class="w-full h-full object-cover object-[center_60%] sm:object-[center_65%]"
+        loading="eager"
+      >
+      <!-- Voile dégradé doux pour assurer la lisibilité parfaite du texte centré -->
+      <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/25 sm:via-white/65 sm:to-transparent"></div>
+    </div>
+
+    <!-- Contenu Texte & CTAs Entièrement Centré -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 my-auto">
+      
+      <!-- Badge Réassurance Centré -->
+      <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-blue-200/80 px-4 py-1.5 rounded-full text-xs font-bold text-tech-blue shadow-xs reveal-on-scroll">
+        <span class="w-2 h-2 rounded-full bg-tech-blue animate-ping"></span>
+        <span class="tracking-wide uppercase font-extrabold text-[11px]">LATEST TECH • LIMITLESS POSSIBILITIES</span>
+      </div>
+
+      <!-- Titre Principal Centré Impactant -->
+      <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-black font-heading tracking-tight text-slate-900 leading-[1.12] reveal-on-scroll delay-100">
+        Le meilleur de la tech, <br class="hidden sm:inline">
+        <span class="text-tech-blue relative inline-block">
+          livré chez vous
+          <svg class="absolute -bottom-2 left-0 w-full h-2.5 text-tech-yellow" viewBox="0 0 100 20" preserveAspectRatio="none" fill="currentColor">
+            <path d="M0 15 Q 50 0 100 15 L 100 20 Z"/>
+          </svg>
+        </span>
+        <span class="text-slate-900"> en 24h</span>
+      </h1>
+
+      <!-- Sous-titre Réassurance Cotonou Centré -->
+      <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed reveal-on-scroll delay-200">
+        Smartphones, ordinateurs portables, casques audio et accessoires originaux certifiés à Cotonou. 
+        <strong class="text-slate-900 font-semibold">Zéro risque :</strong> inspectez et testez votre commande avant de régler le livreur.
+      </p>
+
+      <!-- Deux Boutons CTAs Stratégiques Centrés -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 reveal-on-scroll delay-300">
+        <!-- Bouton Principal Jaune 10% avec effet shine -->
+        <a href="#catalogue" class="btn-cta-primary w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-slate-950 flex items-center justify-center gap-2.5 text-center group shadow-lg shadow-amber-400/30">
+          <span>Voir le catalogue</span>
+          <svg class="btn-icon-arrow w-5 h-5 text-slate-900 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <!-- Bouton Secondaire WhatsApp -->
+        <a id="hero-wa-btn" href="https://wa.me/22994171838" target="_blank" rel="noopener noreferrer" class="btn-tech-outline w-full sm:w-auto px-7 py-3.5 rounded-xl text-base font-bold flex items-center justify-center gap-2.5 bg-white/90 backdrop-blur-md">
+          <svg class="btn-icon-wa w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Commander sur WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- BANDEAU DE CONFIANCE (4 Piliers Clés sur Fond Blanc) -->
+  <!-- ========================================================================= -->
+  <section class="bg-white border-b border-slate-200/70 py-6 sm:py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        
+        <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors reveal-on-scroll">
+          <div class="w-12 h-12 rounded-2xl bg-blue-50 text-tech-blue flex items-center justify-center shrink-0 shadow-2xs">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">Livraison Express</h4>
+            <p class="text-xs text-slate-500">Chez vous en 24h chrono</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors reveal-on-scroll delay-100">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 shadow-2xs">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">100% Authentique</h4>
+            <p class="text-xs text-slate-500">Garantie originale certifiée</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors reveal-on-scroll delay-200">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 shadow-2xs">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">Paiement à la Livraison</h4>
+            <p class="text-xs text-slate-500">Zéro risque, inspectez d'abord</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors reveal-on-scroll delay-300">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 shadow-2xs">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">Support Ultra-Réactif</h4>
+            <p class="text-xs text-slate-500">Réponse WhatsApp en &lt; 10 min</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. CATÉGORIES PHARES (Grandes cartes cliquables) -->
+  <!-- ========================================================================= -->
+  <section class="py-16 bg-slate-50 border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase font-extrabold text-tech-blue tracking-widest bg-blue-100/70 px-3 py-1 rounded-full">Explorez nos rayons</span>
+        <h2 class="text-2xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Catégories Populaires</h2>
+        <p class="text-sm text-slate-500 mt-2">Cliquez sur un univers pour filtrer instantanément le catalogue en bas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Catégorie 1 : Téléphones -->
+        <div onclick="filterFromCategoryCard('phones')" class="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-tech-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 group-hover:bg-tech-blue text-tech-blue group-hover:text-white flex items-center justify-center mb-5 transition-colors shadow-2xs">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Rayon N°1</span>
+            <h3 class="text-xl font-black font-heading text-slate-900 group-hover:text-tech-blue transition-colors mt-0.5">Téléphones</h3>
+            <p class="text-xs text-slate-500 mt-2">iPhone 15, Galaxy S24, Pixel 8, Xiaomi. Neufs & scellés.</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs font-bold text-tech-blue">
+            <span>Voir les téléphones</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+        <!-- Catégorie 2 : Ordinateurs -->
+        <div onclick="filterFromCategoryCard('laptops')" class="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-tech-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col justify-between reveal-on-scroll delay-100">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 group-hover:bg-amber-400 text-amber-600 group-hover:text-slate-950 flex items-center justify-center mb-5 transition-colors shadow-2xs">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Productivité</span>
+            <h3 class="text-xl font-black font-heading text-slate-900 group-hover:text-tech-blue transition-colors mt-0.5">Ordinateurs</h3>
+            <p class="text-xs text-slate-500 mt-2">MacBook Air M3, Dell XPS, HP Gaming, ThinkPad solides.</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs font-bold text-tech-blue">
+            <span>Voir les PC portables</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+        <!-- Catégorie 3 : Casques Audio -->
+        <div onclick="filterFromCategoryCard('audio')" class="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-tech-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col justify-between reveal-on-scroll delay-200">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-indigo-50 group-hover:bg-indigo-600 text-indigo-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors shadow-2xs">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Son Haute Fidélité</span>
+            <h3 class="text-xl font-black font-heading text-slate-900 group-hover:text-tech-blue transition-colors mt-0.5">Casques Audio</h3>
+            <p class="text-xs text-slate-500 mt-2">Sony WH-1000XM5, AirPods Pro 2, JBL Bass, Marshall Rétro.</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs font-bold text-tech-blue">
+            <span>Voir l'univers audio</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+        <!-- Catégorie 4 : Accessoires Tech -->
+        <div onclick="filterFromCategoryCard('accessories')" class="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-tech-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col justify-between reveal-on-scroll delay-300">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 group-hover:bg-emerald-600 text-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors shadow-2xs">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Indispensables</span>
+            <h3 class="text-xl font-black font-heading text-slate-900 group-hover:text-tech-blue transition-colors mt-0.5">Accessoires</h3>
+            <p class="text-xs text-slate-500 mt-2">Chargeurs rapides GaN, Powerbanks 140W, Souris MX Master, Hubs.</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs font-bold text-tech-blue">
+            <span>Voir les accessoires</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. PRODUITS VEDETTES / MEILLEURES VENTES -->
+  <!-- ========================================================================= -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs uppercase font-extrabold text-amber-500 tracking-wider bg-amber-50 px-3 py-1 rounded-full">Plébiscités par nos clients</span>
+          <h2 class="text-2xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Meilleures Ventes du Moment</h2>
+          <p class="text-sm text-slate-500 mt-1">Disponibles immédiatement à Cotonou avec expédition express dans tout le Bénin.</p>
+        </div>
+        <a href="#catalogue" class="text-sm font-bold text-tech-blue hover:text-blue-800 flex items-center gap-1.5 shrink-0">
+          <span>Consulter le catalogue complet (16 articles)</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Grille Dynamique des Produits Vedettes (Injections JS) -->
+      <div id="featured-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rempli par renderFeaturedProducts() dans js/catalogue.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. POURQUOI NOUS CHOISIR (RÉASSURANCE & ANTI-SCEPTICISME) -->
+  <!-- ========================================================================= -->
+  <section id="pourquoi-nous" class="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase font-extrabold text-tech-blue tracking-widest bg-blue-100/70 px-3 py-1 rounded-full">Sérénité Totale</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Pourquoi Acheter Chez K-TECH ?</h2>
+        <p class="text-sm sm:text-base text-slate-500 mt-3 leading-relaxed">
+          Sur le marché tech, la contrefaçon et le manque de garantie sont les pires craintes. 
+          Nous avons éliminé 100% de ces risques grâce à notre protocole de commande directe et vérification sur place.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all reveal-on-scroll">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 text-tech-blue flex items-center justify-center mb-5 font-bold text-2xl">
+            💎
+          </div>
+          <h3 class="text-lg font-bold font-heading text-slate-900 mb-2">100% Originaux Scellés</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Tous nos produits proviennent directement des circuits officiels Apple, Samsung, Sony et Anker. Zéro copie chinoise, boîte scellée avec numéro de série vérifiable.
+          </p>
+        </div>
+
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all reveal-on-scroll delay-100">
+          <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center mb-5 font-bold text-2xl">
+            🚀
+          </div>
+          <h3 class="text-lg font-bold font-heading text-slate-900 mb-2">Livraison Express 24h</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Cotonou et Calavi sont livrés le jour-même ou en 24h chrono. Votre colis est transporté avec soin et suivi direct sur WhatsApp.
+          </p>
+        </div>
+
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all reveal-on-scroll delay-200">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 font-bold text-2xl">
+            🛡️
+          </div>
+          <h3 class="text-lg font-bold font-heading text-slate-900 mb-2">Paiement à la Réception</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Vous ne prenez aucun risque financier : le livreur vous remet le colis, vous vérifiez l'emballage, le modèle et les scellés avant de donner un seul franc CFA.
+          </p>
+        </div>
+
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all reveal-on-scroll delay-300">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 font-bold text-2xl">
+            ⚡
+          </div>
+          <h3 class="text-lg font-bold font-heading text-slate-900 mb-2">Support WhatsApp < 10 min</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Pas de répondeur ni de bot impersonnel : un conseiller expert tech béninois vous assiste, vous conseille le meilleur modèle et assure le service après-vente.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- NOUVELLE SECTION : À PROPOS DE K-TECH (VALEURS K-T-E-C-H & HUMAIN) -->
+  <!-- ========================================================================= -->
+  <section id="a-propos" class="py-16 md:py-24 bg-gradient-to-b from-white via-slate-50/50 to-white border-t border-slate-200/80 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 1. Accroche narrative courte -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase font-extrabold text-tech-blue tracking-widest bg-blue-100/70 px-3.5 py-1 rounded-full">Notre ADN & Engagements</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-slate-900 mt-3 leading-tight">
+          L'expertise tech, <span class="text-tech-blue">à visage humain</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed font-normal">
+          Fondée au cœur du Bénin, <strong class="text-slate-900 font-semibold">K-TECH</strong> s'impose comme la référence locale incontournable pour vos équipements technologiques d'origine certifiée. 
+          Nous éliminons les incertitudes du marché grâce à des appareils scellés, une écoute bienveillante et un engagement sans compromis : 
+          <span class="text-slate-800 font-medium">vous conseiller avec précision et vous livrer en toute sérénité avant tout règlement.</span>
+        </p>
+      </div>
+
+      <!-- 2. Bloc valeurs K-T-E-C-H (Élément central de la marque) -->
+      <div class="mb-20">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Les 5 Piliers Fondateurs de K-Tech</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+          
+          <!-- K — Knowledge (Connaissance) -->
+          <div class="ktech-value-card reveal-on-scroll delay-100">
+            <span class="ktech-letter-watermark">K</span>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-tech-blue text-amber-300 font-black text-xl font-heading flex items-center justify-center mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                K
+              </div>
+              <span class="text-[11px] font-bold text-tech-blue uppercase tracking-wider block mb-1">Pilier 01</span>
+              <h3 class="text-lg font-black font-heading text-slate-900 mb-2.5">
+                Knowledge <br><span class="text-xs font-bold text-slate-500 font-sans font-normal">(Connaissance)</span>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Nous valorisons la connaissance et l'expertise. Chez K-Tech, nous nous engageons à maîtriser les dernières technologies pour offrir des solutions innovantes à nos clients.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span>
+              <span>Expertise pointue</span>
+            </div>
+          </div>
+
+          <!-- T — Transparence -->
+          <div class="ktech-value-card reveal-on-scroll delay-200">
+            <span class="ktech-letter-watermark">T</span>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-tech-blue text-amber-300 font-black text-xl font-heading flex items-center justify-center mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                T
+              </div>
+              <span class="text-[11px] font-bold text-tech-blue uppercase tracking-wider block mb-1">Pilier 02</span>
+              <h3 class="text-lg font-black font-heading text-slate-900 mb-2.5">
+                Transparence <br><span class="text-xs font-bold text-slate-500 font-sans font-normal">(Vérité & Confiance)</span>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                La transparence est au cœur de nos relations. Nous communiquons de manière ouverte et honnête avec nos clients, partenaires et employés, favorisant ainsi la confiance mutuelle.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>Zéro frais cachés</span>
+            </div>
+          </div>
+
+          <!-- E — Excellence -->
+          <div class="ktech-value-card reveal-on-scroll delay-300">
+            <span class="ktech-letter-watermark">E</span>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-tech-blue text-amber-300 font-black text-xl font-heading flex items-center justify-center mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                E
+              </div>
+              <span class="text-[11px] font-bold text-tech-blue uppercase tracking-wider block mb-1">Pilier 03</span>
+              <h3 class="text-lg font-black font-heading text-slate-900 mb-2.5">
+                Excellence <br><span class="text-xs font-bold text-slate-500 font-sans font-normal">(Exigence & Qualité)</span>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Nous poursuivons l'excellence dans tout ce que nous entreprenons. Notre objectif est de fournir des produits et services de la plus haute qualité, dépassant les attentes de nos clients.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+              <span>Garantie certifiée 1 an</span>
+            </div>
+          </div>
+
+          <!-- C — Collaboration -->
+          <div class="ktech-value-card reveal-on-scroll delay-400">
+            <span class="ktech-letter-watermark">C</span>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-tech-blue text-amber-300 font-black text-xl font-heading flex items-center justify-center mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                C
+              </div>
+              <span class="text-[11px] font-bold text-tech-blue uppercase tracking-wider block mb-1">Pilier 04</span>
+              <h3 class="text-lg font-black font-heading text-slate-900 mb-2.5">
+                Collaboration <br><span class="text-xs font-bold text-slate-500 font-sans font-normal">(Esprit d'Équipe)</span>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                La collaboration est essentielle à notre succès. Nous croyons au travail d'équipe et aux partenariats qui nous permettent d'atteindre des objectifs communs.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+              <span>Partenaire de confiance</span>
+            </div>
+          </div>
+
+          <!-- H — Honnêteté -->
+          <div class="ktech-value-card reveal-on-scroll delay-500">
+            <span class="ktech-letter-watermark">H</span>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-tech-blue text-amber-300 font-black text-xl font-heading flex items-center justify-center mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                H
+              </div>
+              <span class="text-[11px] font-bold text-tech-blue uppercase tracking-wider block mb-1">Pilier 05</span>
+              <h3 class="text-lg font-black font-heading text-slate-900 mb-2.5">
+                Honnêteté <br><span class="text-xs font-bold text-slate-500 font-sans font-normal">(Intégrité & Respect)</span>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                L'honnêteté guide chacune de nos actions. Nous agissons avec intégrité, en traitant chacun avec équité et respect.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>Paiement après test</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3 & 4. Bloc Réassurance, Preuve de sérieux & Visuel Showroom / Équipe -->
+      <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden mb-16 reveal-on-scroll">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Visuel Équipe / Showroom K-Tech -->
+          <div class="lg:col-span-6 relative">
+            <div class="showroom-img-frame relative h-72 sm:h-84 rounded-2xl overflow-hidden bg-slate-800 border border-slate-700/80">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Équipe & Showroom K-Tech" class="w-full h-full object-cover">
+              
+              <!-- Dégradé protecteur -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              
+              <!-- Légende intégrée sur l'image -->
+              <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-3.5 rounded-xl border border-slate-700/80 flex items-center justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-white font-heading">Showroom & Boutique K-TECH</h4>
+                  <p class="text-[11px] text-slate-400">Cotonou, Bénin • Accueil & Conseil Pro</p>
+                </div>
+                <span class="text-[10px] font-extrabold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md border border-amber-400/20">
+                  Visite 7j/7
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chiffres clés animés (Preuve de sérieux) -->
+          <div class="lg:col-span-6 space-y-6">
+            <div>
+              <span class="text-xs uppercase font-extrabold text-amber-400 tracking-wider bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">Preuve de Sérieux</span>
+              <h3 class="text-2xl sm:text-3xl font-black font-heading text-white mt-2">
+                Des chiffres qui témoignent de notre engagement
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                Chaque chiffre représente une commande honorée, un client guidé vers le bon appareil, et un livreur qui vous a remis un colis irréprochable.
+              </p>
+            </div>
+
+            <!-- Grille des 4 Chiffres Clés -->
+            <div class="grid grid-cols-2 gap-4 pt-2">
+              
+              <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/60">
+                <div class="text-2xl sm:text-4xl font-black font-heading text-amber-300 stat-counter" data-target="5" data-suffix="+ ans">0</div>
+                <div class="text-xs font-bold text-white mt-1">Années d'Expertise</div>
+                <p class="text-[11px] text-slate-400 mt-0.5">Spécialiste certifié au Bénin</p>
+              </div>
+
+              <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/60">
+                <div class="text-2xl sm:text-4xl font-black font-heading text-white stat-counter" data-target="500" data-prefix="+">0</div>
+                <div class="text-xs font-bold text-white mt-1">Clients Satisfaits</div>
+                <p class="text-[11px] text-slate-400 mt-0.5">Livrés partout au pays</p>
+              </div>
+
+              <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/60">
+                <div class="text-2xl sm:text-4xl font-black font-heading text-amber-300 stat-counter" data-target="100" data-suffix="%">0</div>
+                <div class="text-xs font-bold text-white mt-1">Produits Originaux</div>
+                <p class="text-[11px] text-slate-400 mt-0.5">Scellés et garantis 1 an</p>
+              </div>
+
+              <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/60">
+                <div class="text-2xl sm:text-4xl font-black font-heading text-white stat-counter" data-target="8" data-prefix="< " data-suffix=" min">0</div>
+                <div class="text-xs font-bold text-white mt-1">Réponse WhatsApp</div>
+                <p class="text-[11px] text-slate-400 mt-0.5">Conseiller dédié en direct</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 5. CTA de transition vers l'action -->
+      <div class="bg-gradient-to-r from-blue-50 via-white to-blue-50 border border-blue-100 rounded-3xl p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-sm reveal-on-scroll">
+        <h3 class="text-xl sm:text-2xl font-black font-heading text-slate-900 mb-2">
+          Prêt à trouver l'équipement tech parfaitement adapté à vos besoins ?
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mb-6">
+          Découvrez notre sélection de smartphones, ordinateurs et accessoires en stock immédiat, ou posez-nous vos questions directement sur WhatsApp.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <!-- CTA Primaire Jaune vers le Catalogue -->
+          <a href="#catalogue" class="btn-cta-primary w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-slate-950 flex items-center justify-center gap-2 shadow-md group">
+            <span>Découvrir nos produits</span>
+            <svg class="btn-icon-arrow w-4 h-4 text-slate-950 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+
+          <!-- CTA Secondaire vers WhatsApp -->
+          <a href="https://wa.me/22994171838?text=Bonjour%20K-Tech%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits%20et%20garanties." target="_blank" rel="noopener noreferrer" class="btn-tech-outline w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 text-tech-blue">
+            <svg class="btn-icon-wa w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>Nous contacter sur WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. LIVRAISON & PAIEMENT (SECTION CLÉ POUR LA CONFIANCE) -->
+  <!-- ========================================================================= -->
+  <section id="livraison" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase font-extrabold text-emerald-600 tracking-widest bg-emerald-50 px-3.5 py-1 rounded-full">Simple, Clair, Rassurant</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Comment ça marche ?</h2>
+        <p class="text-sm text-slate-500 mt-2">Commandez en 4 étapes faciles sans carte bancaire ni formalités compliquées.</p>
+      </div>
+
+      <!-- Timeline en 4 Étapes -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20 relative">
+        
+        <!-- Étape 1 -->
+        <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200/80 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-full bg-tech-blue text-white font-black text-sm flex items-center justify-center mb-4 shadow-sm">
+            1
+          </div>
+          <h3 class="text-base font-bold font-heading text-slate-900 mb-2">Tu choisis ton produit</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Parcours notre catalogue, compare les caractéristiques et choisis le smartphone, PC ou accessoire qui te convient.
+          </p>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200/80 reveal-on-scroll delay-100">
+          <div class="w-10 h-10 rounded-full bg-tech-blue text-white font-black text-sm flex items-center justify-center mb-4 shadow-sm">
+            2
+          </div>
+          <h3 class="text-base font-bold font-heading text-slate-900 mb-2">Tu commandes sur WhatsApp</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Clique sur le bouton jaune "Commander sur WhatsApp". Un message pré-rempli avec le nom et le prix du produit est généré en 1 clic.
+          </p>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200/80 reveal-on-scroll delay-200">
+          <div class="w-10 h-10 rounded-full bg-tech-blue text-white font-black text-sm flex items-center justify-center mb-4 shadow-sm">
+            3
+          </div>
+          <h3 class="text-base font-bold font-heading text-slate-900 mb-2">On confirme & expédie</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Notre équipe valide immédiatement ta disponibilité et ton adresse. Le colis scellé part directement en livraison.
+          </p>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200/80 reveal-on-scroll delay-300">
+          <div class="w-10 h-10 rounded-full bg-amber-400 text-slate-950 font-black text-sm flex items-center justify-center mb-4 shadow-sm">
+            4
+          </div>
+          <h3 class="text-base font-bold font-heading text-slate-900 mb-2">Tu payes à la réception</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Le livreur te tend le colis. Tu inspectes ton appareil, puis tu règles en cash ou par Mobile Money (MTN MoMo / Moov).
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bloc Interactif : "Vérifie si on livre chez toi" & Moyens de paiement -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Calculateur Dynamique de Frais/Délais -->
+        <div class="lg:col-span-7 bg-gradient-to-br from-blue-50/70 via-white to-slate-50 p-8 rounded-3xl border border-blue-100 shadow-md">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-tech-blue text-white flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-black font-heading text-slate-900">Vérifie si on livre chez toi</h3>
+              <p class="text-xs text-slate-500">Tape ou sélectionne ta ville pour connaître les frais et le délai exact.</p>
+            </div>
+          </div>
+
+          <!-- Champ de saisie / Sélecteur avec Autocomplétion -->
+          <div class="relative mb-6">
+            <label for="delivery-city-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Indique ta ville au Bénin :</label>
+            <div class="relative">
+              <input type="text" id="delivery-city-input" placeholder="Ex: Cotonou, Calavi, Porto-Novo, Parakou..." autocomplete="off" class="w-full px-4 py-3.5 pl-11 rounded-xl border border-slate-300 focus:border-tech-blue focus:ring-3 focus:ring-blue-100 text-sm font-medium outline-none transition-all">
+              <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+
+            <!-- Liste des suggestions dynamiques -->
+            <ul id="delivery-suggestions" class="absolute left-0 right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-slate-100 divide-y divide-slate-100 z-30 hidden max-h-48 overflow-y-auto">
+              <!-- Rempli en JS -->
+            </ul>
+
+            <!-- Sélecteur alternatif rapide -->
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-xs text-slate-500">Ou choix rapide :</span>
+              <select id="delivery-city-select" class="text-xs font-semibold text-tech-blue bg-blue-50 border border-blue-200 rounded-lg px-2.5 py-1 outline-none">
+                <!-- Rempli en JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Carte Résultat Dynamique -->
+          <div id="delivery-result-card" class="bg-white p-5 rounded-2xl border border-blue-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="space-y-1 text-center sm:text-left min-w-0">
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estimation pour</div>
+              <h4 id="delivery-result-city" class="text-lg font-black font-heading text-slate-900">Cotonou</h4>
+              <p id="delivery-result-note" class="text-xs text-slate-500">Livraison express gratuite en mains propres</p>
+            </div>
+
+            <div class="flex items-center gap-5 border-y md:border-y-0 md:border-x border-slate-100 py-2 md:py-0 md:px-5 shrink-0">
+              <div>
+                <div class="text-[11px] text-slate-400 uppercase font-semibold">Frais</div>
+                <div id="delivery-result-fee" class="text-base font-extrabold text-emerald-600">Gratuit</div>
+              </div>
+              <div>
+                <div class="text-[11px] text-slate-400 uppercase font-semibold">Délai estimé</div>
+                <div id="delivery-result-delay" class="text-base font-extrabold text-tech-blue">24h chrono</div>
+              </div>
+            </div>
+
+            <a id="delivery-action-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-cta-primary px-5 py-3 rounded-xl text-xs font-bold text-slate-950 whitespace-nowrap shrink-0 min-w-max inline-flex items-center justify-center gap-1.5 shadow-md">
+              <span>Commander pour cette ville</span>
+              <svg class="w-4 h-4 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Modes de Paiement Acceptés -->
+        <div class="lg:col-span-5 bg-slate-900 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full text-xs text-amber-300 font-bold mb-4">
+              <span>💳 Zéro Frais Cachés</span>
+            </div>
+            <h3 class="text-xl font-black font-heading text-white mb-2">Modes de Paiement Acceptés</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6">
+              Réglez toujours **après inspection physique** de votre produit auprès du coursier.
+            </p>
+
+            <div class="space-y-3">
+              <!-- Espèces -->
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                <span class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">💵</span>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Espèces / Cash à la livraison</h4>
+                  <p class="text-[11px] text-slate-400">Règlement direct en FCFA au livreur</p>
+                </div>
+              </div>
+
+              <!-- MTN MoMo -->
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                <span class="w-9 h-9 rounded-lg bg-yellow-400 text-slate-950 flex items-center justify-center font-extrabold text-xs">MoMo</span>
+                <div>
+                  <h4 class="text-xs font-bold text-white">MTN Mobile Money</h4>
+                  <p class="text-[11px] text-slate-400">Paiement instantané sans frais additionnels</p>
+                </div>
+              </div>
+
+              <!-- Moov Money -->
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                <span class="w-9 h-9 rounded-lg bg-blue-500 text-white flex items-center justify-center font-extrabold text-xs">Moov</span>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Moov Money (Flooz)</h4>
+                  <p class="text-[11px] text-slate-400">Transfert rapide et sécurisé sur place</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Facture légale fournie à la livraison avec mention de garantie.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. CATALOGUE COMPLET AVEC FILTRES, RECHERCHE & MODAL -->
+  <!-- ========================================================================= -->
+  <section id="catalogue" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- En-tête Catalogue -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs uppercase font-extrabold text-tech-blue tracking-widest bg-blue-100/80 px-3 py-1 rounded-full">Stock Réel Disponible</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Catalogue Complet</h2>
+        <p class="text-sm text-slate-500 mt-2">
+          Filtrez par catégorie, budget ou marque. Cliquez sur un article pour voir sa fiche technique complète.
+        </p>
+      </div>
+
+      <!-- BARRE D'OUTILS ET FILTRES DYNAMIQUES -->
+      <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm mb-8 space-y-5">
+        
+        <!-- Ligne 1 : Catégories (Pills) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <button data-category="all" class="cat-pill-btn active px-4 py-2 rounded-full text-xs md:text-sm font-bold bg-blue-600 text-white shadow-sm transition-all whitespace-nowrap">
+            Tous les produits
+          </button>
+          <button data-category="phones" class="cat-pill-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all whitespace-nowrap">
+            📱 Téléphones
+          </button>
+          <button data-category="laptops" class="cat-pill-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all whitespace-nowrap">
+            💻 Ordinateurs
+          </button>
+          <button data-category="audio" class="cat-pill-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all whitespace-nowrap">
+            🎧 Casques Audio
+          </button>
+          <button data-category="accessories" class="cat-pill-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all whitespace-nowrap">
+            🔌 Accessoires
+          </button>
+        </div>
+
+        <!-- Ligne 2 : Recherche + Budget + Marque + Tri -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 pt-3 border-t border-slate-100 items-center">
+          
+          <!-- Recherche Textuelle -->
+          <div class="lg:col-span-4 relative">
+            <input type="text" id="catalogue-search" placeholder="Rechercher un modèle (iPhone, Dell, Anker...)" class="w-full px-4 py-2.5 pl-10 rounded-xl border border-slate-200 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100 transition-all">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+
+          <!-- Filtre Budget Slider -->
+          <div class="lg:col-span-3">
+            <div class="flex justify-between items-center text-[11px] font-semibold text-slate-600 mb-1">
+              <span>Budget Max :</span>
+              <span id="price-slider-display" class="text-tech-blue font-bold">1 500 000 FCFA</span>
+            </div>
+            <input type="range" id="price-slider" min="20000" max="1500000" step="20000" value="1500000" class="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer">
+          </div>
+
+          <!-- Filtre Marque -->
+          <div class="lg:col-span-2">
+            <select id="filter-brand" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
+              <option value="all">Toutes les marques</option>
+              <!-- Rempli en JS -->
+            </select>
+          </div>
+
+          <!-- Tri -->
+          <div class="lg:col-span-3">
+            <select id="sort-products" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
+              <option value="popularity">Trier : Par popularité</option>
+              <option value="price-asc">Prix : Croissant</option>
+              <option value="price-desc">Prix : Décroissant</option>
+              <option value="rating">Meilleures notes</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Compteur de résultats -->
+        <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+          <div class="flex items-center gap-2">
+            <span>Résultats filtrés :</span>
+            <span id="products-count" class="font-bold text-slate-800 bg-slate-100 px-2.5 py-0.5 rounded-full">16 produits</span>
+          </div>
+          <button onclick="resetFilters()" class="text-xs text-blue-600 hover:underline font-semibold">
+            Effacer les filtres
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Grille de Tous les Produits du Catalogue -->
+      <div id="catalogue-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rempli dynamiquement par renderCatalogue() dans js/catalogue.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. TÉMOIGNAGES CLIENTS & STATS ANIMÉES -->
+  <!-- ========================================================================= -->
+  <section id="avis" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Compteurs Animés de Réassurance -->
+      <div class="bg-gradient-to-r from-tech-navy via-slate-900 to-tech-navy rounded-3xl p-8 md:p-12 text-white mb-16 shadow-2xl">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-slate-800">
+          
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-5xl font-black font-heading text-amber-300 stat-counter" data-target="500" data-prefix="+">0</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Clients satisfaits au Bénin</div>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-5xl font-black font-heading text-white stat-counter" data-target="4.8" data-suffix="/5">0</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Note moyenne certifiée</div>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-5xl font-black font-heading text-amber-300 stat-counter" data-target="99" data-suffix="%">0</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Livraisons réussies dans les délais</div>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-5xl font-black font-heading text-white stat-counter" data-target="8" data-prefix="< " data-suffix=" min">0</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Temps de réponse WhatsApp</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- En-tête de la section Témoignages Déroulants -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs uppercase font-extrabold text-amber-500 tracking-wider bg-amber-50 px-3 py-1 rounded-full">Avis Vérifiés</span>
+          <h2 class="text-2xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Ce que disent nos clients</h2>
+          <p class="text-sm text-slate-500 mt-1">Retours authentiques après réception et test de leurs commandes tech.</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Déroulement en direct (survoler pour figer)
+          </span>
+        </div>
+      </div>
+
+      <!-- DÉROULEMENT CONTINU DES AVIS (MARQUEE INFINI & FLUIDE SANS ARRÊT) -->
+      <div class="reviews-marquee-container">
+        <!-- Masques de dégradé latéral pour une entrée/sortie douce -->
+        <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+        <div class="reviews-marquee-track">
+          
+          <!-- SÉRIE 1 : CARTES AVIS ORIGINALES -->
+          <div class="reviews-marquee-group">
+            
+            <!-- Carte 1 : Arsène K. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "J'avais peur d'acheter un iPhone 15 Pro sur internet au Bénin à cause des arnaques. Le fait de pouvoir le déballer et le vérifier devant le livreur avant de faire le transfert MoMo m'a totalement rassuré. Produit 100% original !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Arsène K." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Arsène K.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Bohicon • Acheté : iPhone 15 Pro</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 2 : Christelle T. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Commande passée à 11h sur WhatsApp pour un MacBook Air M3, livré le lendemain matin à Cotonou vers Akpakpa. Emballage parfait sous blister officiel Apple. Service client poli et très rapide !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Christelle T." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Christelle T.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Cotonou • Acheté : MacBook Air M3</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 3 : Mohamed S. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Casque Sony WH-1000XM5 et chargeur Anker 65W reçus à Parakou par relais sécurisé. Rien à redire, le casque est une pépite et la réduction de bruit fonctionne du tonnerre. Je recommande K-Tech à 100%."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Mohamed S." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Mohamed S.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Parakou • Acheté : Sony XM5 & GaN 65W</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 4 : Bérénice A. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "J'ai pris les AirPods Pro 2 USB-C pour mes cours et visios. Le livreur est venu jusqu'à Calavi, j'ai vérifié le numéro de série sur le site officiel Apple en direct avant de payer. Tout est clean !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Bérénice A." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Bérénice A.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Abomey-Calavi • Acheté : AirPods Pro 2</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 5 : Fabrice D. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Galaxy S24 Ultra titane reçu en 48h chrono à Porto-Novo. L'équipe sur WhatsApp répond en 3 minutes et donne de vrais conseils techniques. Merci pour le sérieux et la facture fournie."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Fabrice D." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Fabrice D.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Porto-Novo • Acheté : Galaxy S24 Ultra</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 6 : Jean-Luc H. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "La batterie Anker 24 000mAh 140W me sauve pendant les coupures de courant pour recharger mon PC de travail. Produit neuf sous emballage d'origine. Boutique très professionnelle."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80" alt="Jean-Luc H." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Jean-Luc H.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Ouidah • Acheté : Batterie Anker 140W</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- SÉRIE 2 (DUPLICATA IDENTIQUE POUR UN DÉFILEMENT SANS FIN NI COUPURE) -->
+          <div class="reviews-marquee-group" aria-hidden="true">
+            
+            <!-- Carte 1 : Arsène K. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "J'avais peur d'acheter un iPhone 15 Pro sur internet au Bénin à cause des arnaques. Le fait de pouvoir le déballer et le vérifier devant le livreur avant de faire le transfert MoMo m'a totalement rassuré. Produit 100% original !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Arsène K." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Arsène K.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Bohicon • Acheté : iPhone 15 Pro</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 2 : Christelle T. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Commande passée à 11h sur WhatsApp pour un MacBook Air M3, livré le lendemain matin à Cotonou vers Akpakpa. Emballage parfait sous blister officiel Apple. Service client poli et très rapide !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Christelle T." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Christelle T.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Cotonou • Acheté : MacBook Air M3</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 3 : Mohamed S. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Casque Sony WH-1000XM5 et chargeur Anker 65W reçus à Parakou par relais sécurisé. Rien à redire, le casque est une pépite et la réduction de bruit fonctionne du tonnerre. Je recommande K-Tech à 100%."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Mohamed S." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Mohamed S.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Parakou • Acheté : Sony XM5 & GaN 65W</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 4 : Bérénice A. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "J'ai pris les AirPods Pro 2 USB-C pour mes cours et visios. Le livreur est venu jusqu'à Calavi, j'ai vérifié le numéro de série sur le site officiel Apple en direct avant de payer. Tout est clean !"
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Bérénice A." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Bérénice A.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Abomey-Calavi • Acheté : AirPods Pro 2</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 5 : Fabrice D. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "Galaxy S24 Ultra titane reçu en 48h chrono à Porto-Novo. L'équipe sur WhatsApp répond en 3 minutes et donne de vrais conseils techniques. Merci pour le sérieux et la facture fournie."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Fabrice D." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Fabrice D.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Porto-Novo • Acheté : Galaxy S24 Ultra</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte 6 : Jean-Luc H. -->
+            <div class="review-card-original">
+              <div>
+                <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                  ★★★★★
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-6">
+                  "La batterie Anker 24 000mAh 140W me sauve pendant les coupures de courant pour recharger mon PC de travail. Produit neuf sous emballage d'origine. Boutique très professionnelle."
+                </p>
+              </div>
+              <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80" alt="Jean-Luc H." class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-900">Jean-Luc H.</h4>
+                  <p class="text-[11px] text-slate-400 font-normal">Ouidah • Acheté : Batterie Anker 140W</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. FAQ (ANTI-OBJECTIONS, ACCORDÉON ANIMÉ) -->
+  <!-- ========================================================================= -->
+  <section id="faq" class="py-16 md:py-24 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs uppercase font-extrabold text-tech-blue tracking-widest bg-blue-100/70 px-3 py-1 rounded-full">Réponses Claires</span>
+        <h2 class="text-2xl sm:text-4xl font-black font-heading text-slate-900 mt-2">Foire Aux Questions</h2>
+        <p class="text-sm text-slate-500 mt-2">Tout ce que vous devez savoir avant de passer commande en toute tranquillité.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- Question 1 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs transition-all">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4">
+            <span class="text-sm sm:text-base font-bold text-slate-900">Les appareils sont-ils garantis originaux et sous blister ?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <div class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+              Absolument. Chez K-TECH, l'authenticité est notre priorité absolue. Tous nos téléphones, ordinateurs et accessoires sont 100% originaux, neufs et scellés d'usine avec le blister constructeur d'origine (ou spécifiés 'Reconditionné certifié grade A+' le cas échéant). Chaque produit est couvert par une garantie écrite de 12 mois.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs transition-all">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4">
+            <span class="text-sm sm:text-base font-bold text-slate-900">Quel est le délai de livraison dans ma ville ?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <div class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+              À **Cotonou**, la livraison est réalisée le jour même ou sous 24h chrono (gratuite en mains propres). À **Abomey-Calavi et Porto-Novo**, comptez 24h à 48h. Pour **Bohicon, Parakou et les autres villes du Bénin**, le délai est de 48h à 72h via notre réseau d'expéditions partenaires sécurisées.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs transition-all">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4">
+            <span class="text-sm sm:text-base font-bold text-slate-900">Comment se passe le paiement ? Dois-je payer une avance ?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <div class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+              Aucun prépaiement par carte bancaire ou lien douteux n'est requis sur ce site. À Cotonou, Calavi et partout au Bénin, vous payez l'intégralité du montant uniquement lorsque le livreur se présente devant vous et que vous avez examiné le colis. Vous pouvez régler en espèces ou via MTN MoMo / Moov Money.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs transition-all">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4">
+            <span class="text-sm sm:text-base font-bold text-slate-900">Puis-je allumer et tester le produit devant le livreur ?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <div class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+              Oui ! C'est exactement le fondement de notre garantie confiance. Vous avez le droit d'inspecter l'intégrité de la boîte, vérifier les mentions constructeur, puis d'allumer l'appareil avec le livreur présent pour vous assurer de son état neuf et fonctionnel avant d'effectuer le paiement.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs transition-all">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4">
+            <span class="text-sm sm:text-base font-bold text-slate-900">Comment faire si je souhaite commander plusieurs articles ensemble ?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <div class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+              C'est très simple : cliquez sur "Commander sur WhatsApp" pour l'un des articles, et dans la discussion WhatsApp, listez simplement à notre conseiller les autres articles désirés (ex: iPhone + coque + chargeur rapide). Nous regroupons votre commande dans un seul colis avec une remise sur le lot !
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 10. CONTACT & LOCALISATION DE LA BOUTIQUE -->
+  <!-- ========================================================================= -->
+  <section id="contact" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Formulaire de Contact avec Redirection WhatsApp -->
+        <div class="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xs">
+          <span class="text-xs uppercase font-extrabold text-tech-blue tracking-wider bg-blue-100/70 px-3 py-1 rounded-full">Assistance Immédiate</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-heading text-slate-900 mt-2 mb-2">Envoyez-nous un Message</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mb-6">
+            Remplissez ce court formulaire : vos informations seront automatiquement transmises à notre messagerie WhatsApp pour une prise en charge prioritaire.
+          </p>
+
+          <form id="contact-form" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Votre Nom Complet *</label>
+                <input type="text" id="contact-name" required placeholder="Ex: Bienvenu Dossou" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100">
+              </div>
+              <div>
+                <label for="contact-phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Téléphone / WhatsApp *</label>
+                <input type="tel" id="contact-phone" required placeholder="Ex: 97 00 00 00" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-city" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Ville de résidence</label>
+                <input type="text" id="contact-city" placeholder="Ex: Cotonou, Calavi, Porto-Novo..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100">
+              </div>
+              <div>
+                <label for="contact-product" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Produit recherché (optionnel)</label>
+                <input type="text" id="contact-product" placeholder="Ex: iPhone 15 Pro, MacBook, Casque..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100">
+              </div>
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Votre Question ou Demande Spécifique</label>
+              <textarea id="contact-message" rows="3" placeholder="Bonjour, je souhaite savoir si le produit est disponible dès aujourd'hui..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100"></textarea>
+            </div>
+
+            <button type="submit" class="btn-cta-primary w-full py-3.5 px-6 rounded-xl font-bold text-slate-950 flex items-center justify-center gap-2 shadow-md">
+              <svg class="w-5 h-5 text-emerald-800" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              <span>Envoyer sur WhatsApp</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Coordonnées & Boutique Physique -->
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+          
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+            <h3 class="text-xl font-black font-heading text-slate-900">Coordonnées K-TECH</h3>
+            
+            <div class="flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-tech-blue flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Boutique Principale</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                  Haie Vive / Boulevard de la Marina, Cotonou, Bénin
+                </p>
+                <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md mt-1 inline-block">Retrait en magasin & livraison express</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Horaires d'Ouverture</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Lundi au Samedi : 08h30 - 20h00</p>
+                <p class="text-xs text-slate-600">Dimanche : 14h00 - 19h00</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Ligne Directe / WhatsApp</h4>
+                <a href="tel:+22994171838" class="store-phone-link text-sm font-black text-tech-blue hover:underline mt-0.5 block">+229 94 17 18 38</a>
+                <span class="text-[11px] text-slate-500">Service client réactif</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carte / Repère Visuel Stylisé -->
+          <div class="bg-gradient-to-tr from-slate-900 to-tech-navy p-6 rounded-3xl text-white relative overflow-hidden shadow-lg">
+            <div class="relative z-10">
+              <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-400">Position Géographique</span>
+              <h4 class="text-base font-bold font-heading mt-1">Cotonou & Rayonnement National</h4>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                Notre boutique principale à Cotonou permet des livraisons express en mains propres le jour même à Cotonou et Calavi, ainsi que des expéditions quotidiennes sécurisées vers tout le Bénin (Porto-Novo, Bohicon, Parakou, etc.).
+              </p>
+              <div class="mt-4 flex items-center gap-2">
+                <a href="https://wa.me/22994171838?text=Bonjour,%20pouvez-vous%20m'indiquer%20l'itin%C3%A9raire%20pour%20venir%20%C3%A0%20la%20boutique%20%C3%A0%20Cotonou%20?" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-amber-300 hover:text-white underline">
+                  Demander l'itinéraire sur WhatsApp →
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 11. FOOTER (FOND BLEU TECH FONCÉ & INFOS TRANSPARENCY) -->
+  <!-- ========================================================================= -->
+  <footer class="bg-tech-navy text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Colonne 1 : Brand & Vision -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 rounded-xl bg-tech-blue flex items-center justify-center text-white font-black">
+              <svg class="w-5 h-5 text-amber-300" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="text-2xl font-black font-heading tracking-tight text-white">
+              K<span class="text-tech-blue">-TECH</span>
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Votre destination tech de référence au Bénin. Catalogue d'équipements neufs et certifiés avec commande instantanée sur WhatsApp et règlement à la réception.
+          </p>
+          <div class="pt-2 text-xs font-bold text-amber-400 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Boutique certifiée • Produits 100% garantis</span>
+          </div>
+        </div>
+
+        <!-- Colonne 2 : Liens Rapides -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold text-white tracking-widest mb-4">Navigation</h4>
+          <ul class="space-y-2.5 text-xs text-slate-400 font-medium">
+            <li><a href="#" class="hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="#catalogue" class="hover:text-white transition-colors">Catalogue complet</a></li>
+            <li><a href="#a-propos" class="hover:text-white transition-colors">À Propos & Valeurs K-Tech</a></li>
+            <li><a href="#pourquoi-nous" class="hover:text-white transition-colors">Pourquoi nous choisir</a></li>
+            <li><a href="#livraison" class="hover:text-white transition-colors">Calculateur de livraison</a></li>
+            <li><a href="#avis" class="hover:text-white transition-colors">Avis clients vérifiés</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">Foire aux questions</a></li>
+          </ul>
+        </div>
+
+        <!-- Colonne 3 : Rayons Phares -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold text-white tracking-widest mb-4">Catégories</h4>
+          <ul class="space-y-2.5 text-xs text-slate-400 font-medium">
+            <li><a href="javascript:void(0)" onclick="filterFromCategoryCard('phones')" class="hover:text-white transition-colors">Smartphones & iPhones</a></li>
+            <li><a href="javascript:void(0)" onclick="filterFromCategoryCard('laptops')" class="hover:text-white transition-colors">MacBooks & PC Portables</a></li>
+            <li><a href="javascript:void(0)" onclick="filterFromCategoryCard('audio')" class="hover:text-white transition-colors">Casques & Écouteurs sans fil</a></li>
+            <li><a href="javascript:void(0)" onclick="filterFromCategoryCard('accessories')" class="hover:text-white transition-colors">Chargeurs GaN & Powerbanks</a></li>
+            <li><a href="javascript:void(0)" onclick="filterFromCategoryCard('accessories')" class="hover:text-white transition-colors">Câbles & Hubs USB-C</a></li>
+          </ul>
+        </div>
+
+        <!-- Colonne 4 : Réseaux & Contact -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold text-white tracking-widest mb-4">Contact Direct</h4>
+          <div class="space-y-3 text-xs text-slate-400">
+            <p>Cotonou, Bénin</p>
+            <p>WhatsApp : <a href="https://wa.me/22994171838" class="text-white font-bold hover:underline">+229 94 17 18 38</a></p>
+            <p>Email : contact@ktech-benin.com</p>
+            
+            <div class="pt-2 flex items-center gap-3">
+              <a href="https://wa.me/22994171838" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-colors" title="WhatsApp">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              </a>
+              <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors" title="Facebook">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+              </a>
+              <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-pink-600 text-white flex items-center justify-center transition-colors" title="Instagram">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright et Reassurance Finale -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div>
+          &copy; 2026 <strong>K-TECH Bénin</strong>. Tous droits réservés. Vente par catalogue sans prépaiement en ligne.
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span>Paiement sécurisé à la réception</span>
+          <span>•</span>
+          <span>Facture & Garantie 1 an</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+  <!-- ========================================================================= -->
+  <!-- MODAL DÉTAILLÉE DU PRODUIT -->
+  <!-- ========================================================================= -->
+  <div id="product-modal-backdrop" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6" onclick="if(event.target === this) closeProductModal()">
+    <div id="product-modal-content" class="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <!-- Rempli dynamiquement par openProductModal(id) dans js/modal.js -->
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SCRIPTS MODULAIRES JS -->
+  <!-- ========================================================================= -->
+  <script src="js/config.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/delivery-calculator.js"></script>
+  <script src="js/catalogue.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
+

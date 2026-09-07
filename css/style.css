@@ -1,0 +1,536 @@
+/**
+ * K-TECH — Styles Principaux, Identité Visuelle & Animations Avancées
+ * Règle 60% Blanc / 30% Bleu Tech (#0057D9) / 10% Jaune CTA (#FFC700)
+ */
+
+:root {
+  --color-white: #FFFFFF;
+  --color-bg-light: #F8FAFC;
+  --color-bg-subtle: #F1F5F9;
+  
+  --color-tech-blue: #0057D9;
+  --color-tech-blue-hover: #0046B3;
+  --color-tech-blue-light: #EBF3FF;
+  --color-navy-dark: #06152D;
+  --color-navy-card: #0B2545;
+  
+  --color-tech-yellow: #FFC700;
+  --color-tech-yellow-hover: #E6B300;
+  --color-tech-yellow-light: #FFF9E6;
+  
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  
+  --whatsapp-green: #25D366;
+  --whatsapp-hover: #1EBE5B;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-blue-glow: 0 12px 30px -8px rgba(0, 87, 217, 0.22);
+  --shadow-yellow-glow: 0 10px 28px -4px rgba(255, 199, 0, 0.55);
+  --shadow-wa-glow: 0 10px 25px -4px rgba(37, 211, 102, 0.45);
+}
+
+/* Base & Typographie */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tech-blue);
+}
+
+/* ========================================================================= */
+/* ANIMATIONS AVANCÉES SUR LES BOUTONS (EFFET GLOW, SHINE & MICRO-INTERACTIONS) */
+/* ========================================================================= */
+
+/* Bouton CTA Principal Jaune 10% */
+.btn-cta-primary {
+  background-color: var(--color-tech-yellow);
+  color: #0F172A;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 16px rgba(255, 199, 0, 0.4), 0 0 0 1px rgba(255, 199, 0, 0.25);
+  z-index: 1;
+}
+
+/* Effet de reflet lumineux diagonal (Shine sweep) périodique */
+.btn-cta-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-25deg);
+  animation: btnShineSweep 3.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes btnShineSweep {
+  0%, 25% {
+    left: -150%;
+  }
+  60%, 100% {
+    left: 200%;
+  }
+}
+
+.btn-cta-primary:hover {
+  background-color: var(--color-tech-yellow-hover);
+  transform: translateY(-3px) scale(1.025);
+  box-shadow: 0 10px 28px -3px rgba(255, 199, 0, 0.65), 0 0 20px rgba(255, 199, 0, 0.3);
+}
+
+.btn-cta-primary:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(255, 199, 0, 0.4);
+}
+
+/* Micro-interaction sur les icônes à l'intérieur des boutons CTA */
+.btn-cta-primary svg, .btn-whatsapp-action svg {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-cta-primary:hover svg.btn-icon-arrow {
+  transform: translateX(4px);
+}
+
+.btn-cta-primary:hover svg.btn-icon-wa, .btn-whatsapp-action:hover svg {
+  animation: waIconBounce 0.6s ease-in-out;
+}
+
+@keyframes waIconBounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(-8deg); }
+  75% { transform: scale(1.15) rotate(8deg); }
+}
+
+/* Boutons Secondaires (Bleu Tech 30%) */
+.btn-tech-blue {
+  background-color: var(--color-tech-blue);
+  color: #FFFFFF;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 14px rgba(0, 87, 217, 0.25);
+}
+
+.btn-tech-blue:hover {
+  background-color: var(--color-tech-blue-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-blue-glow);
+}
+
+.btn-tech-blue:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Bouton Contour Tech Blue */
+.btn-tech-outline {
+  border: 2px solid var(--color-tech-blue);
+  color: var(--color-tech-blue);
+  background: transparent;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-tech-outline:hover {
+  background-color: var(--color-tech-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 87, 217, 0.18);
+}
+
+.btn-tech-outline:active {
+  transform: translateY(0);
+}
+
+/* Bouton Vert WhatsApp Action */
+.btn-whatsapp-action {
+  background-color: var(--whatsapp-green);
+  color: #FFFFFF;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-wa-glow);
+}
+
+.btn-whatsapp-action:hover {
+  background-color: var(--whatsapp-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px -4px rgba(37, 211, 102, 0.55);
+}
+
+/* ========================================================================= */
+/* ANIMATION DU MOCKUP HERO & ÉLÉMENTS FLOTTANTS */
+/* ========================================================================= */
+
+.hero-mockup-card {
+  animation: heroFloat 5s ease-in-out infinite;
+  transition: transform 0.4s ease;
+}
+
+.hero-mockup-card:hover {
+  animation-play-state: paused;
+  transform: scale(1.015);
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Cercles lumineux pulsants d'arrière-plan */
+.ambient-glow-orb {
+  animation: orbPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.12; }
+  50% { transform: scale(1.1) translate(10px, -15px); opacity: 0.22; }
+  100% { transform: scale(0.95) translate(-10px, 10px); opacity: 0.15; }
+}
+
+/* ========================================================================= */
+/* CARTES PRODUITS & MICRO-INTERACTIONS */
+/* ========================================================================= */
+
+.product-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 87, 217, 0.3);
+  box-shadow: 0 20px 35px -10px rgba(0, 87, 217, 0.18), 0 0 15px rgba(0, 87, 217, 0.06);
+}
+
+.product-card .img-zoom-container {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.product-card .img-zoom-container img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .img-zoom-container img {
+  transform: scale(1.07);
+}
+
+/* Badges Produits avec pulsation douce */
+.badge-best-seller {
+  background: linear-gradient(135deg, #FFC700, #FFA000);
+  color: #111827;
+  font-weight: 700;
+  animation: badgeBreathe 3s ease-in-out infinite;
+}
+
+.badge-new {
+  background: #0057D9;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.badge-promo {
+  background: #EF4444;
+  color: #FFFFFF;
+  font-weight: 700;
+  animation: badgeBreathe 2.5s ease-in-out infinite;
+}
+
+@keyframes badgeBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* ========================================================================= */
+/* BOUTON WHATSAPP FLOTTANT ÉPURÉ (SANS TEXTE PARASITE) */
+/* ========================================================================= */
+
+.floating-wa-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-pulse-circle {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-color: var(--whatsapp-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wa-pulse-circle:hover {
+  transform: scale(1.12);
+  background-color: var(--whatsapp-hover);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+}
+
+.wa-pulse-circle:active {
+  transform: scale(0.95);
+}
+
+.wa-pulse-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--whatsapp-green);
+  border-radius: 50%;
+  animation: waPulseRing 2s infinite cubic-bezier(0.45, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes waPulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+/* ========================================================================= */
+/* DÉROULEMENT CONTINU DES AVIS CLIENTS (MARQUEE INFINI & FLUIDE) */
+/* ========================================================================= */
+
+.reviews-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 16px 0 24px 0;
+}
+
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+}
+
+.reviews-marquee-group {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+  animation: marqueeContinuous 38s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marqueeContinuous {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 24px));
+  }
+}
+
+/* Pause au survol pour permettre la lecture */
+.reviews-marquee-container:hover .reviews-marquee-group {
+  animation-play-state: paused;
+}
+
+/* Carte Avis Originale (Conforme à media_1788804526135.png) */
+.review-card-original {
+  background: #FFFFFF;
+  border: 1px solid #F1F5F9;
+  border-radius: 16px;
+  padding: 24px 26px;
+  width: 360px;
+  max-width: 85vw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.reviews-marquee-container:hover .review-card-original:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 87, 217, 0.25);
+  box-shadow: 0 12px 24px -6px rgba(0, 87, 217, 0.1);
+}
+
+/* ========================================================================= */
+/* ANIMATIONS AU SCROLL */
+/* ========================================================================= */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays pour effets en cascade */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Accordéon FAQ */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+}
+
+.faq-item.active .faq-content {
+  max-height: 500px;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* Modal Produit */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background-color: rgba(6, 21, 45, 0.65);
+}
+
+/* Badge de statut clignotant */
+.live-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  position: relative;
+}
+
+.live-status-dot::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  border: 2px solid #10B981;
+  animation: statusPulse 2s infinite ease-in-out;
+}
+
+@keyframes statusPulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* ========================================================================= */
+/* SECTION À PROPOS & CARTES VALEURS K-T-E-C-H */
+/* ========================================================================= */
+
+.ktech-value-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 28px 22px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ktech-value-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 87, 217, 0.35);
+  box-shadow: 0 20px 35px -8px rgba(0, 87, 217, 0.16);
+}
+
+/* Grand caractère en filigrane d'arrière-plan */
+.ktech-letter-watermark {
+  position: absolute;
+  right: -5px;
+  bottom: -20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 135px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(0, 87, 217, 0.05);
+  pointer-events: none;
+  transition: all 0.4s ease;
+  user-select: none;
+}
+
+.ktech-value-card:hover .ktech-letter-watermark {
+  color: rgba(0, 87, 217, 0.12);
+  transform: scale(1.08) translateY(-6px);
+}
+
+/* Effet visuel showroom & équipe */
+.showroom-img-frame {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(6, 21, 45, 0.25);
+  transition: transform 0.4s ease;
+}
+
+.showroom-img-frame:hover {
+  transform: scale(1.02);
+}
+

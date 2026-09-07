@@ -1,0 +1,20 @@
+{
+  "name": "k-tech-store",
+  "version": "1.0.0",
+  "description": "Boutique en ligne tech à haute conversion avec commande directe sur WhatsApp et paiement à la livraison",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Static site ready for deployment'"
+  },
+  "keywords": [
+    "ecommerce",
+    "whatsapp-ordering",
+    "benin",
+    "tech-store",
+    "catalogue"
+  ],
+  "author": "K-Tech",
+  "license": "MIT"
+}
+
