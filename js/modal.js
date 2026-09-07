@@ -36,7 +36,7 @@ function openProductModal(productId) {
   // Vignettes de la galerie
   const thumbnailsHtml = product.images.map((img, idx) => `
     <button onclick="changeModalMainImage('${img}', this)" class="modal-thumb w-14 h-14 rounded-lg border-2 ${idx === 0 ? 'border-blue-600 ring-2 ring-blue-100' : 'border-slate-200'} overflow-hidden transition-all shrink-0">
-      <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
+      <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover" loading="lazy">
     </button>
   `).join('');
 
@@ -47,7 +47,7 @@ function openProductModal(productId) {
 
   const similarHtml = similarProducts.map(sp => `
     <div class="flex items-center gap-3 p-2 bg-slate-50 rounded-xl hover:bg-blue-50 cursor-pointer transition-colors" onclick="openProductModal('${sp.id}')">
-      <img src="${sp.images[0]}" class="w-12 h-12 object-cover rounded-lg border border-slate-200" alt="${sp.name}">
+      <img src="${sp.images[0]}" class="w-12 h-12 object-cover rounded-lg border border-slate-200" alt="${sp.name}" loading="lazy">
       <div class="flex-1 min-w-0">
         <h5 class="text-xs font-bold text-slate-900 truncate">${sp.name}</h5>
         <span class="text-xs font-extrabold text-blue-700">${formatPrice(sp.price)} FCFA</span>
