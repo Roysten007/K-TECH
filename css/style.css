@@ -525,7 +525,7 @@ h1, h2, h3, h4, .font-heading {
   right: -5px;
   bottom: -20px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 135px;
+  font-size: clamp(75px, 12vw, 135px);
   font-weight: 900;
   line-height: 1;
   color: rgba(0, 87, 217, 0.05);
