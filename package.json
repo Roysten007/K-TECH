@@ -4,8 +4,7 @@
   "description": "Boutique en ligne tech à haute conversion avec commande directe sur WhatsApp et paiement à la livraison",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo 'Static site ready for deployment'"
+    "start": "node server.js"
   },
   "keywords": [
     "ecommerce",
