@@ -65,7 +65,7 @@ function openProductModal(productId) {
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 md:p-8 max-h-[88vh] overflow-y-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 sm:p-6 md:p-8 max-h-[88vh] overflow-y-auto">
       <!-- Colonne Gauche : Galerie Photos -->
       <div class="lg:col-span-6 flex flex-col gap-4">
         <div class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center border border-slate-100 h-72 md:h-96">
