@@ -69,21 +69,35 @@ function initAnimatedCounters() {
 // 3. Accordéon FAQ fluide
 function initFAQ() {
   const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
+  faqItems.forEach((item, idx) => {
     const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
     if (!trigger) return;
+
+    const contentId = `faq-answer-${idx + 1}`;
+    if (content) {
+      content.id = contentId;
+      trigger.setAttribute('aria-controls', contentId);
+    }
+    trigger.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
 
     trigger.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       // Fermer les autres accordéons
       faqItems.forEach(other => {
-        if (other !== item) other.classList.remove('active');
+        if (other !== item) {
+          other.classList.remove('active');
+          const otherTrigger = other.querySelector('.faq-trigger');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        }
       });
       // Toggle l'élément courant
       if (isActive) {
         item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
       } else {
         item.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
       }
     });
   });
@@ -98,28 +112,45 @@ function initMobileMenu() {
 
   if (!menuBtn || !mobileDrawer) return;
 
+  function openMenu() {
+    mobileDrawer.classList.remove('hidden');
+    mobileDrawer.classList.add('flex');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeMenu() {
+    mobileDrawer.classList.add('hidden');
+    mobileDrawer.classList.remove('flex');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = 'auto';
+  }
+
   function toggleMenu() {
     const isHidden = mobileDrawer.classList.contains('hidden');
     if (isHidden) {
-      mobileDrawer.classList.remove('hidden');
-      mobileDrawer.classList.add('flex');
-      document.body.style.overflow = 'hidden';
+      openMenu();
     } else {
-      mobileDrawer.classList.add('hidden');
-      mobileDrawer.classList.remove('flex');
-      document.body.style.overflow = 'auto';
+      closeMenu();
     }
   }
 
   menuBtn.addEventListener('click', toggleMenu);
-  if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileDrawer.classList.add('hidden');
-      mobileDrawer.classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Fermer le tiroir avec la touche Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileDrawer.classList.contains('hidden')) {
+      closeMenu();
+      menuBtn.focus();
+    }
   });
 }
 

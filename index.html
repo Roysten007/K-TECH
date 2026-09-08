@@ -126,7 +126,7 @@
         </a>
 
         <!-- Hamburger Mobile -->
-        <button id="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" class="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors">
+        <button id="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-haspopup="dialog" class="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
@@ -135,7 +135,7 @@
   </header>
 
   <!-- Tiroir Mobile -->
-  <div id="mobile-nav-drawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex-col justify-end">
+  <div id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Menu principal de navigation" aria-hidden="true" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex-col justify-end">
     <div class="bg-white rounded-t-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
         <span class="font-black font-heading text-xl text-slate-900">Menu K-TECH</span>
@@ -766,7 +766,7 @@
           <div class="relative mb-6">
             <label for="delivery-city-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Indique ta ville au Bénin :</label>
             <div class="relative">
-              <input type="text" id="delivery-city-input" placeholder="Ex: Cotonou, Calavi, Porto-Novo, Parakou..." autocomplete="off" class="w-full px-4 py-3.5 pl-11 rounded-xl border border-slate-300 focus:border-tech-blue focus:ring-3 focus:ring-blue-100 text-sm font-medium outline-none transition-all">
+              <input type="text" id="delivery-city-input" aria-label="Indiquez votre ville au Bénin" placeholder="Ex: Cotonou, Calavi, Porto-Novo, Parakou..." autocomplete="off" class="w-full px-4 py-3.5 pl-11 rounded-xl border border-slate-300 focus:border-tech-blue focus:ring-3 focus:ring-blue-100 text-sm font-medium outline-none transition-all">
               <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
 
@@ -778,7 +778,7 @@
             <!-- Sélecteur alternatif rapide -->
             <div class="mt-3 flex flex-wrap items-center gap-2">
               <span class="text-xs text-slate-500">Ou choix rapide :</span>
-              <select id="delivery-city-select" class="text-xs font-semibold text-tech-blue bg-blue-50 border border-blue-200 rounded-lg min-h-[44px] px-3 py-2 outline-none max-w-full">
+              <select id="delivery-city-select" aria-label="Sélection rapide de la ville au Bénin" class="text-xs font-semibold text-tech-blue bg-blue-50 border border-blue-200 rounded-lg min-h-[44px] px-3 py-2 outline-none max-w-full">
                 <!-- Rempli en JS -->
               </select>
             </div>
@@ -905,7 +905,7 @@
           
           <!-- Recherche Textuelle -->
           <div class="lg:col-span-4 relative">
-            <input type="text" id="catalogue-search" placeholder="Rechercher un modèle (iPhone, Dell, Anker...)" class="w-full min-h-[44px] px-4 py-2.5 pl-10 rounded-xl border border-slate-200 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100 transition-all">
+            <input type="text" id="catalogue-search" aria-label="Rechercher un modèle ou équipement tech dans le catalogue" placeholder="Rechercher un modèle (iPhone, Dell, Anker...)" class="w-full min-h-[44px] px-4 py-2.5 pl-10 rounded-xl border border-slate-200 text-xs font-medium outline-none focus:border-tech-blue focus:ring-2 focus:ring-blue-100 transition-all">
             <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           </div>
 
@@ -915,12 +915,12 @@
               <span>Budget Max :</span>
               <span id="price-slider-display" class="text-tech-blue font-bold">1 500 000 FCFA</span>
             </div>
-            <input type="range" id="price-slider" min="20000" max="1500000" step="20000" value="1500000" class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
+            <input type="range" id="price-slider" aria-label="Sélectionner le budget maximum en FCFA" min="20000" max="1500000" step="20000" value="1500000" class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
           </div>
 
           <!-- Filtre Marque -->
           <div class="lg:col-span-2">
-            <select id="filter-brand" class="w-full min-h-[44px] px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
+            <select id="filter-brand" aria-label="Filtrer les produits par marque" class="w-full min-h-[44px] px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
               <option value="all">Toutes les marques</option>
               <!-- Rempli en JS -->
             </select>
@@ -928,7 +928,7 @@
 
           <!-- Tri -->
           <div class="lg:col-span-3">
-            <select id="sort-products" class="w-full min-h-[44px] px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
+            <select id="sort-products" aria-label="Trier les produits du catalogue" class="w-full min-h-[44px] px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 outline-none focus:border-tech-blue">
               <option value="popularity">Trier : Par popularité</option>
               <option value="price-asc">Prix : Croissant</option>
               <option value="price-desc">Prix : Décroissant</option>
@@ -1561,7 +1561,7 @@
   <!-- ========================================================================= -->
   <!-- MODAL DÉTAILLÉE DU PRODUIT -->
   <!-- ========================================================================= -->
-  <div id="product-modal-backdrop" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6" onclick="if(event.target === this) closeProductModal()">
+  <div id="product-modal-backdrop" role="dialog" aria-modal="true" aria-label="Fiche produit détaillée" aria-hidden="true" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6" onclick="if(event.target === this) closeProductModal()">
     <div id="product-modal-content" class="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
       <!-- Rempli dynamiquement par openProductModal(id) dans js/modal.js -->
     </div>

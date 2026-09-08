@@ -35,9 +35,7 @@ function openProductModal(productId) {
 
   // Vignettes de la galerie
   const thumbnailsHtml = product.images.map((img, idx) => `
-    <button onclick="changeModalMainImage('${img}', this)" class="modal-thumb w-14 h-14 rounded-lg border-2 ${idx === 0 ? 'border-blue-600 ring-2 ring-blue-100' : 'border-slate-200'} overflow-hidden transition-all shrink-0">
-      <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
-    <button onclick="changeModalMainImage('${img}', this)" class="modal-thumb w-14 h-14 min-w-[44px] min-h-[44px] rounded-lg border-2 ${idx === 0 ? 'border-blue-600 ring-2 ring-blue-100' : 'border-slate-200'} overflow-hidden transition-all shrink-0">
+    <button onclick="changeModalMainImage('${img}', this)" aria-label="Afficher la photo ${idx + 1}" class="modal-thumb w-14 h-14 min-w-[44px] min-h-[44px] rounded-lg border-2 ${idx === 0 ? 'border-blue-600 ring-2 ring-blue-100' : 'border-slate-200'} overflow-hidden transition-all shrink-0">
       <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover" loading="lazy">
     </button>
   `).join('');
@@ -48,15 +46,12 @@ function openProductModal(productId) {
     .slice(0, 3);
 
   const similarHtml = similarProducts.map(sp => `
-    <div class="flex items-center gap-3 p-2 bg-slate-50 rounded-xl hover:bg-blue-50 cursor-pointer transition-colors" onclick="openProductModal('${sp.id}')">
-      <img src="${sp.images[0]}" class="w-12 h-12 object-cover rounded-lg border border-slate-200" alt="${sp.name}">
-    <div class="flex items-center gap-3 p-2.5 min-h-[44px] bg-slate-50 rounded-xl hover:bg-blue-50 cursor-pointer transition-colors" onclick="openProductModal('${sp.id}')">
+    <div class="flex items-center gap-3 p-2.5 min-h-[44px] bg-slate-50 rounded-xl hover:bg-blue-50 cursor-pointer transition-colors" onclick="openProductModal('${sp.id}')" role="button" tabindex="0" aria-label="Voir ${sp.name}" onkeydown="if(event.key==='Enter'||event.key===' ')openProductModal('${sp.id}')">
       <img src="${sp.images[0]}" class="w-12 h-12 object-cover rounded-lg border border-slate-200" alt="${sp.name}" loading="lazy">
       <div class="flex-1 min-w-0">
         <h5 class="text-xs font-bold text-slate-900 truncate">${sp.name}</h5>
         <span class="text-xs font-extrabold text-blue-700">${formatPrice(sp.price)} FCFA</span>
       </div>
-      <span class="text-[11px] text-blue-600 font-bold bg-white px-2 py-1 rounded-md shadow-xs shrink-0">Voir</span>
       <span class="text-[11px] text-blue-600 font-bold bg-white px-2.5 py-1.5 rounded-md shadow-xs shrink-0">Voir</span>
     </div>
   `).join('');
@@ -189,9 +184,15 @@ function openProductModal(productId) {
     </div>
   `;
 
+  window.lastModalTrigger = document.activeElement;
   modalBackdrop.classList.remove('hidden');
   modalBackdrop.classList.add('flex');
+  modalBackdrop.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  // Focus le bouton fermer pour l'accessibilité clavier
+  const closeBtn = modalContent.querySelector('button[onclick="closeProductModal()"]');
+  if (closeBtn) closeBtn.focus();
 }
 
 function changeModalMainImage(imgUrl, thumbEl) {
@@ -200,10 +201,10 @@ function changeModalMainImage(imgUrl, thumbEl) {
     mainImg.src = imgUrl;
   }
   document.querySelectorAll('.modal-thumb').forEach(t => {
-    t.className = 'modal-thumb w-14 h-14 rounded-lg border-2 border-slate-200 overflow-hidden transition-all shrink-0';
+    t.className = 'modal-thumb w-14 h-14 min-w-[44px] min-h-[44px] rounded-lg border-2 border-slate-200 overflow-hidden transition-all shrink-0';
   });
   if (thumbEl) {
-    thumbEl.className = 'modal-thumb w-14 h-14 rounded-lg border-2 border-blue-600 ring-2 ring-blue-100 overflow-hidden transition-all shrink-0';
+    thumbEl.className = 'modal-thumb w-14 h-14 min-w-[44px] min-h-[44px] rounded-lg border-2 border-blue-600 ring-2 ring-blue-100 overflow-hidden transition-all shrink-0';
   }
 }
 
@@ -212,8 +213,12 @@ function closeProductModal() {
   if (modalBackdrop) {
     modalBackdrop.classList.add('hidden');
     modalBackdrop.classList.remove('flex');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
   }
   document.body.style.overflow = 'auto';
+  if (window.lastModalTrigger && typeof window.lastModalTrigger.focus === 'function') {
+    window.lastModalTrigger.focus();
+  }
 }
 
 // Écouteur touche Échap et clic extérieur
